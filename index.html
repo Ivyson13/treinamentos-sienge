@@ -2,14 +2,23 @@
 layout: default
 title: "Treinamentos Sienge"
 subtitle: "Organizado por módulos (YouTube não listado)"
+show_nav: true
 ---
 
-<input id="search" class="search" type="search" placeholder="Buscar... (ex: notas fiscais, títulos, estoque)">
+<input id="search" class="search" type="search" placeholder="Buscar... (ex: notas fiscais, títulos, estoque)" aria-label="Buscar treinamentos">
+
+<div class="kpi" id="kpi">
+  <span>Total: <strong id="totalCount">0</strong></span>
+  <span>Mostrando: <strong id="shownCount">0</strong></span>
+</div>
 
 {% assign grouped = site.videos | group_by: "module" %}
 
 {% for group in grouped %}
-  <h2 class="section-title">{{ group.name }}</h2>
+  {% assign anchor = group.name | downcase %}
+
+  <h2 id="{{ anchor }}" class="section-title">{{ group.name }}</h2>
+  <p class="section-sub">Clique em um card para abrir o vídeo e o passo a passo.</p>
 
   <div class="grid">
     {% for v in group.items %}
@@ -18,21 +27,44 @@ subtitle: "Organizado por módulos (YouTube não listado)"
          data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }} {{ v.summary }}">
         <h3 class="card-title">{{ v.title }}</h3>
         {% if v.summary %}<p class="card-desc">{{ v.summary }}</p>{% endif %}
-        <span class="pill">{{ v.module }}</span>
+
+        <div class="meta-row">
+          <span class="pill">{{ v.module }}</span>
+          <span class="badge">Abrir →</span>
+        </div>
       </a>
     {% endfor %}
   </div>
 {% endfor %}
 
+<p id="emptyState" class="prose" style="display:none;margin-top:18px;color:var(--muted2);">
+  Nenhum resultado encontrado. Tente outro termo.
+</p>
+
 <script>
   const search = document.getElementById("search");
   const cards = Array.from(document.querySelectorAll(".video-card"));
+  const totalCount = document.getElementById("totalCount");
+  const shownCount = document.getElementById("shownCount");
+  const emptyState = document.getElementById("emptyState");
 
-  search.addEventListener("input", () => {
+  totalCount.textContent = cards.length;
+
+  function applyFilter(){
     const q = search.value.trim().toLowerCase();
+    let shown = 0;
+
     cards.forEach(card => {
       const text = (card.dataset.tags || "").toLowerCase();
-      card.style.display = text.includes(q) ? "" : "none";
+      const ok = text.includes(q);
+      card.style.display = ok ? "" : "none";
+      if (ok) shown++;
     });
-  });
+
+    shownCount.textContent = shown;
+    emptyState.style.display = shown === 0 ? "" : "none";
+  }
+
+  search.addEventListener("input", applyFilter);
+  applyFilter();
 </script>

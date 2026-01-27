@@ -4,29 +4,57 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} — {{ site.title }}</title>
-
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
   <header class="header">
-    <div class="container">
-      <a href="{{ '/' | relative_url }}">← Início</a>
-      <h1>{{ page.title }}</h1>
-      {% if page.subtitle %}
-        <p class="subtitle">{{ page.subtitle }}</p>
+    <div class="container header-inner">
+      <div class="topbar">
+        <a class="breadcrumb" href="{{ '/' | relative_url }}">← Início</a>
+
+        {% if page.back_link %}
+          <a class="btn" href="{{ page.back_link | relative_url }}">Voltar</a>
+        {% endif %}
+      </div>
+
+      <div>
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+      </div>
+
+      {% if page.show_nav %}
+      <nav class="nav" aria-label="Módulos">
+        <a href="{{ '/' | relative_url }}#compras">Compras</a>
+        <a href="{{ '/' | relative_url }}#estoque">Estoque</a>
+        <a href="{{ '/' | relative_url }}#financeiro">Financeiro</a>
+        <a href="{{ '/' | relative_url }}#contratos">Contratos</a>
+      </nav>
       {% endif %}
     </div>
   </header>
 
-  <!-- TUDO acontece aqui dentro -->
-  <main class="container">
+  <main id="conteudo" class="container">
     {{ content }}
 
-    <footer class="footer" style="margin-top:40px;">
+    <footer class="footer">
       <p><strong>Aviso:</strong> conteúdo interno/educacional. Não redistribuir.</p>
     </footer>
   </main>
 
+  <a id="toTop" class="to-top btn" href="{{ '/' | relative_url }}">↑ Topo</a>
+
+  <script>
+    // botão "topo" aparece ao rolar
+    const btn = document.getElementById('toTop');
+    const toggle = () => {
+      if (window.scrollY > 700) btn.classList.add('show');
+      else btn.classList.remove('show');
+    };
+    window.addEventListener('scroll', toggle);
+    toggle();
+  </script>
 </body>
 </html>
