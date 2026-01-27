@@ -12,7 +12,7 @@ subtitle: "Organizado por módulos (YouTube não listado)"
   <div class="grid" id="grid-{{ forloop.index }}">
     {% for v in group.items %}
       <a class="card video-card"
-         href="{{ v.url }}"
+         href="{{ v.url | relative_url }}"
          data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }}">
         <h3 style="margin:0 0 6px;">{{ v.title }}</h3>
         {% if v.summary %}<p style="margin:0;opacity:.85;">{{ v.summary }}</p>{% endif %}

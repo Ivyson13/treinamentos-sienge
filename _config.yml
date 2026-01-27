@@ -1,5 +1,9 @@
 title: "Treinamentos Sienge"
 description: "Vídeos (YouTube não listado) organizados por módulos"
+
+url: "https://ivyson13.github.io"
+baseurl: "/treinamentos-sienge"
+
 theme: null
 
 collections:
