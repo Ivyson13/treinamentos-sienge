@@ -1,11 +1,10 @@
-<!doctype html><html lang="pt-br"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{{ page.title }} — {{ site.title }}</title><link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}"></head><body><header class="header"><div class="container"><a href="{{ '/' | relative_url }}">← Início</a><h1 style="margin:10px 0 0;">{{ page.title }}</h1>{% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}</div></header><main class="container">{{ content }}<footer class="footer"><p><strong>Aviso:</strong> conteúdo interno/educacional. Não redistribuir.</p></footer></main></body></html><!doctype html>
+<!doctype html>
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ page.title }} — {{ site.title }}</title>
 
-  <!-- CSS correto para GitHub Pages -->
   <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 
@@ -20,12 +19,14 @@
     </div>
   </header>
 
+  <!-- TUDO acontece aqui dentro -->
   <main class="container">
     {{ content }}
+
+    <footer class="footer" style="margin-top:40px;">
+      <p><strong>Aviso:</strong> conteúdo interno/educacional. Não redistribuir.</p>
+    </footer>
   </main>
 
-  <footer class="footer container">
-    <p><strong>Aviso:</strong> conteúdo interno/educacional. Não redistribuir.</p>
-  </footer>
 </body>
 </html>
