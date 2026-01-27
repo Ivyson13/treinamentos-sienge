@@ -2,5 +2,10 @@
 title: "Posições de estoque"
 module: "Estoque"
 youtube_id: "540tLE39ba0"
+summary: "Consultar saldo/posição e usar filtros principais."
+tags: ["estoque", "posição", "saldo", "almoxarifado"]
 ---
-Passo a passo aqui.
+1. Acessar **Estoque → Posições**  
+2. Filtrar por **obra/almoxarifado** (se houver)  
+3. Conferir **saldos** e **movimentações** relacionadas  
+4. Exportar/registrar quando necessário

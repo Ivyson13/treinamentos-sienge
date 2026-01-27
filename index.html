@@ -1,15 +1,38 @@
 ---
 layout: default
 title: "Treinamentos Sienge"
-subtitle: "Organizado por módulos"
+subtitle: "Organizado por módulos (YouTube não listado)"
 ---
-<input id="search" class="search" type="search" placeholder="Buscar...">
+
+<input id="search" class="search" type="search" placeholder="Buscar... (ex: notas fiscais, títulos, estoque)">
+
 {% assign grouped = site.videos | group_by: "module" %}
+
 {% for group in grouped %}
-<h2 style="margin-top:22px;">{{ group.name }}</h2>
-<div class="grid">
-{% for v in group.items %}
-<a class="card" href="{{ v.url | relative_url }}"><h3>{{ v.title }}</h3><span class="pill">{{ v.module }}</span></a>
+  <h2 class="section-title">{{ group.name }}</h2>
+
+  <div class="grid">
+    {% for v in group.items %}
+      <a class="card video-card"
+         href="{{ v.url | relative_url }}"
+         data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }} {{ v.summary }}">
+        <h3 class="card-title">{{ v.title }}</h3>
+        {% if v.summary %}<p class="card-desc">{{ v.summary }}</p>{% endif %}
+        <span class="pill">{{ v.module }}</span>
+      </a>
+    {% endfor %}
+  </div>
 {% endfor %}
-</div>
-{% endfor %}
+
+<script>
+  const search = document.getElementById("search");
+  const cards = Array.from(document.querySelectorAll(".video-card"));
+
+  search.addEventListener("input", () => {
+    const q = search.value.trim().toLowerCase();
+    cards.forEach(card => {
+      const text = (card.dataset.tags || "").toLowerCase();
+      card.style.display = text.includes(q) ? "" : "none";
+    });
+  });
+</script>
