@@ -2,8 +2,10 @@
 layout: default
 subtitle: "Vídeo + passo a passo"
 ---
+
 <section class="card">
   <h2>Vídeo</h2>
+
   <div class="video-wrap">
     <iframe
       src="https://www.youtube.com/embed/{{ page.youtube_id }}"
@@ -11,12 +13,10 @@ subtitle: "Vídeo + passo a passo"
     </iframe>
   </div>
 
-  <p style="opacity:.85;margin-top:10px;">
-    Módulo: <strong>{{ page.module }}</strong>
-  </p>
+  <p>Módulo: <strong>{{ page.module }}</strong></p>
 </section>
 
-<section class="card" style="margin-top:14px;">
+<section class="card" style="margin-top:16px;">
   <h2>Passo a passo</h2>
   {{ content }}
 </section>
