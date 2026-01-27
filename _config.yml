@@ -1,0 +1,15 @@
+title: "Treinamentos Sienge"
+description: "Vídeos (YouTube não listado) organizados por módulos"
+theme: null
+
+collections:
+  videos:
+    output: true
+    permalink: /videos/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: videos
+    values:
+      layout: video
