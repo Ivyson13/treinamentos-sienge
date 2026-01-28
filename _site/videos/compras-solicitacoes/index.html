@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ page.title }} — {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  <title>Cadastro de Solicitações de Compra — Treinamentos Sienge</title>
+  <link rel="stylesheet" href="/treinamentos-sienge/assets/style.css">
 </head>
 
 <body>
@@ -13,43 +13,75 @@
   <header class="header">
     <div class="container header-inner">
       <div class="topbar">
-        <a class="breadcrumb" href="{{ '/' | relative_url }}">← Início</a>
+        <a class="breadcrumb" href="/treinamentos-sienge/">← Início</a>
 
         <button id="themeToggle" class="theme-toggle" type="button">
           Alternar tema
         </button>
 
 
-        {% if page.back_link %}
-          <a class="btn" href="{{ page.back_link | relative_url }}">Voltar</a>
-        {% endif %}
+        
       </div>
 
       <div>
-        <h1>{{ page.title }}</h1>
-        {% if page.subtitle %}<p class="subtitle">{{ page.subtitle }}</p>{% endif %}
+        <h1>Cadastro de Solicitações de Compra</h1>
+        
       </div>
 
-      {% if page.show_nav %}
-      <nav class="nav" aria-label="Módulos">
-        <a href="{{ '/' | relative_url }}#compras" data-module="compras">Compras</a>
-        <a href="{{ '/' | relative_url }}#estoque" data-module="estoque">Estoque</a>
-        <a href="{{ '/' | relative_url }}#financeiro" data-module="financeiro">Financeiro</a>
-        <a href="{{ '/' | relative_url }}#contratos" data-module="contratos">Contratos</a>
-      </nav>
-      {% endif %}
+      
     </div>
   </header>
 
   <main id="conteudo" class="container">
-    {{ content }}
+    <section class="card prose">
+  <h2>Vídeo</h2>
+
+  
+    <div class="video-wrap">
+      <iframe
+        src="https://www.youtube.com/embed/oTvLKLaE2CY"
+        allowfullscreen>
+      </iframe>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn primary"
+         href="https://youtu.be/oTvLKLaE2CY"
+         target="_blank" rel="noopener noreferrer">
+        Abrir no YouTube
+      </a>
+      <a class="btn" href="/treinamentos-sienge/#compras">
+        Ver mais do módulo
+      </a>
+    </div>
+  
+
+  <div class="kpi" style="margin-top:14px;">
+    <span>Módulo: <strong>Compras</strong></span>
+    
+      <span>Tags: <strong>compras, solicitação, requisição</strong></span>
+    
+  </div>
+</section>
+
+<section class="card prose" style="margin-top:16px;">
+  <h2>Passo a passo</h2>
+  <ol>
+  <li>Acessar <strong>Compras → Solicitações</strong></li>
+  <li>Clicar em <strong>Nova solicitação</strong></li>
+  <li>Informar <strong>itens/quantidades</strong> e <strong>centro de custo</strong> (se usar)</li>
+  <li><strong>Salvar</strong> e acompanhar o status</li>
+</ol>
+
+</section>
+
 
     <footer class="footer">
       <p><strong>Aviso:</strong> conteúdo interno/educacional. Não redistribuir.</p>
     </footer>
   </main>
 
-  <a id="toTop" class="to-top btn" href="{{ '/' | relative_url }}">↑ Topo</a>
+  <a id="toTop" class="to-top btn" href="/treinamentos-sienge/">↑ Topo</a>
 
   <script>
     // botão "topo" aparece ao rolar

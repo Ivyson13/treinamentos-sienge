@@ -1,7 +1,7 @@
 ---
 title: "Posições de estoque"
 module: "Estoque"
-youtube_id: "540tLE39ba0"
+youtube_id: "bEZglZtyRN0"
 summary: "Consultar saldo/posição e usar filtros principais."
 tags: ["estoque", "posição", "saldo", "almoxarifado"]
 ---

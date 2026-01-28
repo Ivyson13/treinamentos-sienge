@@ -23,6 +23,7 @@ show_nav: true
   <div class="grid">
     {% for v in group.items %}
       <a class="card video-card"
+         data-module="{{ v.module | downcase }}"
          href="{{ v.url | relative_url }}"
          data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }} {{ v.summary }}">
         <h3 class="card-title">{{ v.title }}</h3>
