@@ -8,4 +8,4 @@ order: 10
 status: "atualizado"
 ---
 
-(Em breve) — assim que o YouTube liberar o upload, eu te ajudo a plugar o ID aqui.
+(Em breve)
