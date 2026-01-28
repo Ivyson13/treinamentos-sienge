@@ -4,5 +4,8 @@ module: "Estoque"
 youtube_id: "540tLE39ba0"
 summary: "Entrada/saída/ajustes: como lançar movimentos."
 tags: ["estoque", "movimentos", "entrada", "saída", "ajuste"]
+order: 10
+status: "atualizado"
 ---
+
 (Em breve) — assim que o YouTube liberar o upload, eu te ajudo a plugar o ID aqui.

@@ -4,7 +4,10 @@ module: "Compras"
 youtube_id: "hCf9_7v8AQM"
 summary: "Cadastrar NF de compra e conferir dados principais."
 tags: ["compras", "nota fiscal", "nf", "entrada"]
+order: 20
+status: 
 ---
+
 1. Acessar **Compras → Notas Fiscais**  
 2. Clicar em **Nova**  
 3. Informar **Fornecedor**, **Data**, **Itens** e **Valores**  

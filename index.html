@@ -4,65 +4,56 @@ title: "Treinamentos Sienge"
 subtitle: "Organizado por módulos (YouTube não listado)"
 show_nav: true
 ---
-
 <input id="search" class="search" type="search" placeholder="Buscar... (ex: notas fiscais, títulos, estoque)" aria-label="Buscar treinamentos">
 
-<div class="kpi" id="kpi">
-  <span>Total: <strong id="totalCount">0</strong></span>
-  <span>Mostrando: <strong id="shownCount">0</strong></span>
-</div>
-
 {% assign grouped = site.videos | group_by: "module" %}
-
 {% for group in grouped %}
   {% assign anchor = group.name | downcase %}
-
   <h2 id="{{ anchor }}" class="section-title">{{ group.name }}</h2>
   <p class="section-sub">Clique em um card para abrir o vídeo e o passo a passo.</p>
 
+  {% assign items = group.items | sort: "order" %}
   <div class="grid">
-    {% for v in group.items %}
+    {% for v in items %}
       <a class="card video-card"
          data-module="{{ v.module | downcase }}"
          href="{{ v.url | relative_url }}"
-         data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }} {{ v.summary }}">
+         data-tags="{{ v.title }} {{ v.module }} {{ v.tags | join: ' ' }} {{ v.summary }} {{ v.status }}">
         <h3 class="card-title">{{ v.title }}</h3>
         {% if v.summary %}<p class="card-desc">{{ v.summary }}</p>{% endif %}
 
         <div class="meta-row">
           <span class="pill">{{ v.module }}</span>
-          <span class="badge">Abrir →</span>
+          <div style="display:flex; gap:8px; align-items:center;">
+            {% if v.status %}
+              <span class="status {{ v.status }}">{{ v.status | upcase }}</span>
+            {% endif %}
+            <span class="badge">Abrir →</span>
+          </div>
         </div>
       </a>
     {% endfor %}
   </div>
 {% endfor %}
 
-<p id="emptyState" class="prose" style="display:none;margin-top:18px;color:var(--muted2);">
+<p id="emptyState" style="display:none;margin-top:18px;color:var(--muted2);">
   Nenhum resultado encontrado. Tente outro termo.
 </p>
 
 <script>
   const search = document.getElementById("search");
   const cards = Array.from(document.querySelectorAll(".video-card"));
-  const totalCount = document.getElementById("totalCount");
-  const shownCount = document.getElementById("shownCount");
   const emptyState = document.getElementById("emptyState");
-
-  totalCount.textContent = cards.length;
 
   function applyFilter(){
     const q = search.value.trim().toLowerCase();
     let shown = 0;
-
     cards.forEach(card => {
       const text = (card.dataset.tags || "").toLowerCase();
       const ok = text.includes(q);
       card.style.display = ok ? "" : "none";
-      if (ok) shown++;
+      if(ok) shown++;
     });
-
-    shownCount.textContent = shown;
     emptyState.style.display = shown === 0 ? "" : "none";
   }
 

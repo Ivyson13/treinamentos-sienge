@@ -4,7 +4,10 @@ module: "Contratos"
 youtube_id: "cWpZYlC4wAg"
 summary: "Como cadastrar um contrato no Sienge."
 tags: ["contratos", "cadastro"]
+order: 10
+status: "novo"
 ---
+
 1. Acessar **Contratos → Contratos**
 2. Clicar em **Novo contrato**
 3. Preencher dados principais (partes, datas, valores, centro de custo se houver)

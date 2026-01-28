@@ -3,44 +3,33 @@ layout: default
 subtitle: "Vídeo + passo a passo"
 show_nav: true
 ---
+<section class="card">
+  <h2 style="margin:0 0 10px;">Vídeo</h2>
 
-<section class="card prose">
-  <h2>Vídeo</h2>
+  {% if page.youtube_id %}
+  <div class="video-wrap">
+    <iframe src="https://www.youtube.com/embed/{{ page.youtube_id }}" allowfullscreen></iframe>
+  </div>
 
-  {% if page.youtube_id and page.youtube_id != "COLE_O_ID_AQUI" %}
-    <div class="video-wrap">
-      <iframe
-        src="https://www.youtube.com/embed/{{ page.youtube_id }}"
-        allowfullscreen>
-      </iframe>
-    </div>
-
-    <div class="btn-row">
-      <a class="btn primary"
-         href="https://youtu.be/{{ page.youtube_id }}"
-         target="_blank" rel="noopener noreferrer">
-        Abrir no YouTube
-      </a>
-      <a class="btn" href="{{ '/' | relative_url }}#{{ page.module | downcase }}">
-        Ver mais do módulo
-      </a>
-    </div>
-  {% else %}
-    <div class="card" style="opacity:.88;">
-      <h3 style="margin:0 0 8px;">Vídeo em breve</h3>
-      <p style="margin:0;color:var(--muted2);">Upload pendente/aguardando link.</p>
-    </div>
-  {% endif %}
-
-  <div class="kpi" style="margin-top:14px;">
-    <span>Módulo: <strong>{{ page.module }}</strong></span>
-    {% if page.tags %}
-      <span>Tags: <strong>{{ page.tags | join: ", " }}</strong></span>
+  <div class="meta-row" style="margin-top:12px;">
+    <span class="pill">{{ page.module }}</span>
+    {% if page.status %}
+      <span class="status {{ page.status }}">{{ page.status | upcase }}</span>
     {% endif %}
   </div>
+
+  <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+    <a class="badge" href="https://youtu.be/{{ page.youtube_id }}" target="_blank" rel="noopener noreferrer">Abrir no YouTube</a>
+    <a class="badge" href="{{ '/' | relative_url }}#{{ page.module | downcase }}">Ver mais do módulo</a>
+  </div>
+  {% else %}
+    <p style="color:var(--muted2); margin:0;">Vídeo em breve.</p>
+  {% endif %}
 </section>
 
-<section class="card prose" style="margin-top:16px;">
-  <h2>Passo a passo</h2>
-  {{ content }}
+<section class="card" style="margin-top:16px;">
+  <h2 style="margin:0 0 10px;">Passo a passo</h2>
+  <div style="color:var(--muted); line-height:1.55;">
+    {{ content }}
+  </div>
 </section>

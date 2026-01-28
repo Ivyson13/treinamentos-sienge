@@ -1,7 +1,3 @@
-/* =========================================================
-   BASE + THEMES
-   ========================================================= */
-
 :root{
   font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
   color-scheme: dark;
@@ -47,10 +43,6 @@ html[data-theme="light"]{
   --shadow:0 8px 18px rgba(0,0,0,.12);
 }
 
-/* =========================================================
-   RESET / LAYOUT
-   ========================================================= */
-
 *{ box-sizing:border-box; }
 html{ scroll-behavior:smooth; }
 body{ margin:0; background:var(--bg); color:var(--text); }
@@ -62,10 +54,7 @@ a{ color:inherit; text-decoration:none; }
   padding:24px;
 }
 
-/* =========================================================
-   ACCESSIBILITY
-   ========================================================= */
-
+/* ACCESSIBILITY */
 .skip-link{
   position:absolute;
   left:-999px;
@@ -84,10 +73,7 @@ a{ color:inherit; text-decoration:none; }
   outline-offset:3px;
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
-
+/* HEADER */
 .header{
   position:sticky;
   top:0;
@@ -116,6 +102,7 @@ html[data-theme="light"] .header{
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:10px;
 }
 
 .breadcrumb{
@@ -128,10 +115,6 @@ html[data-theme="light"] .header{
   border-color:var(--brandBorder);
 }
 
-/* =========================================================
-   TITLES / NAV
-   ========================================================= */
-
 h1{
   margin:0;
   font-size:34px;
@@ -142,6 +125,7 @@ h1{
   color:var(--muted);
 }
 
+/* NAV */
 .nav{
   display:flex;
   gap:8px;
@@ -160,10 +144,20 @@ h1{
   color:var(--text);
 }
 
-/* =========================================================
-   SEARCH
-   ========================================================= */
+/* CORES NO MENU DO TOPO */
+.nav a[data-module="compras"]{ border-color: rgba(0,184,148,.45); }
+.nav a[data-module="compras"]:hover{ background: rgba(0,184,148,.18); }
 
+.nav a[data-module="estoque"]{ border-color: rgba(9,132,227,.45); }
+.nav a[data-module="estoque"]:hover{ background: rgba(9,132,227,.18); }
+
+.nav a[data-module="financeiro"]{ border-color: rgba(245,179,53,.45); }
+.nav a[data-module="financeiro"]:hover{ background: rgba(245,179,53,.22); }
+
+.nav a[data-module="contratos"]{ border-color: rgba(162,155,254,.45); }
+.nav a[data-module="contratos"]:hover{ background: rgba(162,155,254,.22); }
+
+/* SEARCH */
 .search{
   width:100%;
   padding:12px 14px;
@@ -180,10 +174,7 @@ h1{
   box-shadow:0 0 0 4px rgba(245,179,53,.14);
 }
 
-/* =========================================================
-   SECTIONS
-   ========================================================= */
-
+/* SECTIONS */
 .section-title{
   margin:32px 0 8px;
   padding-left:14px;
@@ -207,10 +198,7 @@ h1{
   color:var(--muted2);
 }
 
-/* =========================================================
-   GRID / CARDS
-   ========================================================= */
-
+/* GRID / CARDS */
 .grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
@@ -248,7 +236,7 @@ h1{
   margin-top:12px;
 }
 
-/* CTA badge */
+/* Badge */
 .badge{
   font-size:12px;
   padding:6px 10px;
@@ -258,10 +246,24 @@ h1{
   color:var(--muted);
 }
 
-/* =========================================================
-   CATEGORY COLORS (data-module)
-   ========================================================= */
+/* Status badge */
+.status{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid;
+  color:var(--text);
+}
+.status.novo{
+  background: rgba(0,184,148,.22);
+  border-color: rgba(0,184,148,.45);
+}
+.status.atualizado{
+  background: rgba(245,179,53,.22);
+  border-color: rgba(245,179,53,.45);
+}
 
+/* Category pills (data-module) */
 .pill{
   padding:6px 10px;
   border-radius:999px;
@@ -305,10 +307,7 @@ h1{
   border-color:rgba(162,155,254,.55);
 }
 
-/* =========================================================
-   VIDEO
-   ========================================================= */
-
+/* Video */
 .video-wrap{
   position:relative;
   padding-top:56.25%;
@@ -324,10 +323,21 @@ h1{
   border:0;
 }
 
-/* =========================================================
-   FOOTER
-   ========================================================= */
+/* Theme toggle button */
+.theme-toggle{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:7px 12px;
+  border-radius:999px;
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--border);
+  color:var(--text);
+  font-size:13px;
+}
+.theme-toggle:hover{ border-color:var(--border2); }
 
+/* Footer */
 .footer{
   margin-top:32px;
   padding-top:18px;
@@ -336,10 +346,7 @@ h1{
   color:var(--muted2);
 }
 
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
+/* Mobile */
 @media (max-width:520px){
   .container{ padding:16px; }
   h1{ font-size:26px; }
@@ -347,32 +354,32 @@ h1{
   .card{ padding:14px; }
 }
 
-/* ===== CORES NO MENU DO TOPO ===== */
-
-.nav a[data-module="compras"]{
-  border-color: rgba(0,184,148,.45);
-}
-.nav a[data-module="compras"]:hover{
-  background: rgba(0,184,148,.18);
+/* Alinha as pílulas do topo na mesma coluna do título */
+.header .header-inner{
+  align-items: flex-start;
 }
 
-.nav a[data-module="estoque"]{
-  border-color: rgba(9,132,227,.45);
-}
-.nav a[data-module="estoque"]:hover{
-  background: rgba(9,132,227,.18);
-}
-
-.nav a[data-module="financeiro"]{
-  border-color: rgba(245,179,53,.45);
-}
-.nav a[data-module="financeiro"]:hover{
-  background: rgba(245,179,53,.22);
+.header .nav{
+  width: 100%;
+  justify-content: flex-start;
+  align-self: flex-start;
 }
 
-.nav a[data-module="contratos"]{
-  border-color: rgba(162,155,254,.45);
+/* (opcional) no celular fica mais bonito centralizado */
+@media (max-width:520px){
+  .header .nav{
+    justify-content: center;
+  }
 }
-.nav a[data-module="contratos"]:hover{
-  background: rgba(162,155,254,.22);
+
+/* Corrige âncoras com header sticky (o scroll para no ponto certo) */
+html{
+  scroll-padding-top: 140px; /* ajuste fino se quiser */
 }
+
+/* garante que os títulos com id também respeitem a margem */
+.section-title{
+  scroll-margin-top: 140px; /* mesmo valor do scroll-padding-top */
+}
+
+

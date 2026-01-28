@@ -4,7 +4,10 @@ module: "Contratos"
 youtube_id: "W7ONrcoLAaY"
 summary: "Como cadastrar medições vinculadas ao contrato."
 tags: ["contratos", "medições", "cadastro"]
+order: 20
+status: "novo"
 ---
+
 1. Acessar **Contratos → Medições**
 2. Selecionar o contrato
 3. Informar período/itens/valores da medição
